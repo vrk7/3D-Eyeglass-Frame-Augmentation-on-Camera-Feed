@@ -38,3 +38,29 @@ This project demonstrates a virtual glasses augmentation application using OpenC
 4. The glasses will be automatically overlaid on the detected face.
 
 5. Press 'q' to quit the application.
+
+
+## How it works
+
+1. The script loads the 3D glasses model using Trimesh and creates a Pyrender mesh from it.
+
+2. It initializes the Mediapipe Face Mesh model for face detection and landmark estimation.
+
+3. A Pyrender scene is created with a camera and the glasses node.
+
+4. The script captures video frames from the webcam using OpenCV.
+
+5. For each frame:
+- The frame is flipped horizontally for a mirror effect.
+- The frame is converted to RGB color space.
+- Faces are detected using the Mediapipe Face Mesh model.
+- For each detected face:
+  - The eye coordinates are extracted from the face landmarks.
+  - The center of the eyes is calculated.
+  - The glasses position and orientation are set based on the eye coordinates.
+  - The scene is rendered using Pyrender.
+  - The rendered glasses are overlaid on the frame using a mask.
+
+6. The resulting frame with the overlaid glasses is displayed in a window.
+
+7. The process continues until the user presses 'q' to quit the application.
