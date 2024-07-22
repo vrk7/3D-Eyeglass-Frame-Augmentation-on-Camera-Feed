@@ -7,6 +7,7 @@ import trimesh
 # Load the 3D glass model
 try:
     glass_trimesh = trimesh.load("C:/Users/vysak/OneDrive/Desktop/3D Work/oculos.obj")
+    print("3D model loaded successfully.")
 except Exception as e:
     print(f"Error loading 3D model: {e}")
     exit()
@@ -62,14 +63,25 @@ try:
                     right_eye_coords = np.array([right_eye.x * w, right_eye.y * h, right_eye.z * w])
                     center_eye = (left_eye_coords + right_eye_coords) / 2
 
+                    # Debugging: print coordinates
+                    print(f"Left eye: {left_eye_coords}, Right eye: {right_eye_coords}, Center: {center_eye}")
+
+                    # Visualize detected landmarks for debugging
+                    frame = cv2.circle(frame, (int(left_eye_coords[0]), int(left_eye_coords[1])), 3, (0, 255, 0), -1)
+                    frame = cv2.circle(frame, (int(right_eye_coords[0]), int(right_eye_coords[1])), 3, (0, 255, 0), -1)
+                    frame = cv2.circle(frame, (int(center_eye[0]), int(center_eye[1])), 3, (255, 0, 0), -1)
+
                     # Convert center_eye to the correct type
                     center_eye = center_eye.astype(np.float32)
 
                     # Set the glass position and orientation based on the eye coordinates
                     glass_matrix = np.eye(4, dtype=np.float32)
                     glass_matrix[:3, 3] = center_eye
-                    glass_matrix[:3, :3] = cv2.Rodrigues(np.array([0, 0, 0], dtype=np.float32))[0]
+                    glass_matrix[:3, :3] = cv2.Rodrigues(np.array([0, 0, 0], dtype=np.float32))[0]  # Identity rotation
                     glass_node.matrix = glass_matrix
+
+                    # Debugging: print transformation matrix
+                    print(f"Glass matrix: {glass_matrix}")
 
                     # Render the scene
                     color, depth = renderer.render(scene)
