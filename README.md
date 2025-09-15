@@ -58,17 +58,11 @@ The application detects a face in real-time from your webcam and overlays a **3D
 2. Detect face – MediaPipe Face Mesh detects landmarks on the face.
 3. Setup scene – A Pyrender scene with a camera and glasses mesh is created.
 4. Process frames – For each video frame:
-
-   Flip horizontally for a mirror effect
-   
-   Convert to RGB
-   
-   Detect face + extract eye landmarks
-   
-   Compute eye center & adjust glasses position/orientation
-   
-   Render the glasses mesh
-   
+   Flip horizontally for a mirror effect 
+   Convert to RGB  
+   Detect face + extract eye landmarks   
+   Compute eye center & adjust glasses position/orientation   
+   Render the glasses mesh   
    Overlay rendered glasses onto the original frame
 5. Display – Show augmented feed in real-time until the user quits.
 
