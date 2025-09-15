@@ -65,7 +65,3 @@ The application detects a face in real-time from your webcam and overlays a **3D
    Render the glasses mesh   
    Overlay rendered glasses onto the original frame
 5. Display – Show augmented feed in real-time until the user quits.
-
-
-   
-   
