@@ -34,6 +34,7 @@ The application detects a face in real-time from your webcam and overlays a **3D
 2. **Install dependencies**
    ```bash
    pip install -r requirements.txt
+   
 3. **Fix OpenGL errors (Linux only)**
    If you face errors related to OpenGL, install:
 
