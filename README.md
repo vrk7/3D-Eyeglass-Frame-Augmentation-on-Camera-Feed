@@ -45,7 +45,7 @@ The application detects a face in real-time from your webcam and overlays a **3D
 
 ## 🚀 Usage
 
-1. Place your 3D glasses model file (e.g., oculos.obj) in the project directory.
+1. Place your 3D glass model file (e.g., oculos.obj) in the project directory.
 2. Run the script:
    ```bash
    python glasses_augmentation.py
